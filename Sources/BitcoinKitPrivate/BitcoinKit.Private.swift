@@ -228,7 +228,10 @@ public class _HDKey {
             //if BN_is_zero(privateKeyNum) {
             //    return nil
             //}
-            if privateKeyNum.pointee.top == 0 { // BN_is_zero
+            //if privateKeyNum.pointee.top == 0 { // BN_is_zero
+            //    return nil
+            //}
+            if BN_is_zero(privateKeyNum) != 0 { // BN_is_zero
                 return nil
             }
             let numBytes = ((BN_num_bits(privateKeyNum)+7)/8) // BN_num_bytes
